@@ -11,4 +11,13 @@ public class MobileTest {
 
         assertEquals("Mensagem enviada no mobile via SMS: Test message", mobile.getLastMessage());
     }
+
+    @Test
+    void shouldSendAEmailMessage() {
+        MessageProvider emailProvider = new Email();
+        Mobile mobile = new Mobile(emailProvider);
+        mobile.sendMessage("Test message");
+
+        assertEquals("Mensagem enviada no mobile via Email: Test message", mobile.getLastMessage());
+    }
 }
